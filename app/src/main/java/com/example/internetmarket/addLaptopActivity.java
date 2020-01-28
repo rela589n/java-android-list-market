@@ -39,23 +39,30 @@ public class addLaptopActivity extends AppCompatActivity {
             date.set(Calendar.DAY_OF_MONTH, Integer.parseInt(day.getText().toString()));
 
         } catch (Exception e) {
-            Toast.makeText(getBaseContext(), "Invalid date format", Toast.LENGTH_SHORT);
+            Toast.makeText(getApplicationContext(), "Invalid date format", Toast.LENGTH_SHORT).show();
             return;
         }
+
         /////////////////////////////////////////////////////////////
-        EditText lModel = (EditText) findViewById(R.id.addLaptopModel);
-        EditText lYear = (EditText) findViewById(R.id.addLaptopYear);
 
-        Laptop laptop = new Laptop(name.getText().toString(),
-                description.getText().toString(),
-                Double.parseDouble(price.getText().toString()),
-                inStock.isChecked(),
-                Integer.parseInt(count.getText().toString()),
-                date,
-                new ProductCategory(category.getText().toString()),
-                lModel.getText().toString(),
-                Integer.parseInt(lYear.getText().toString())
-        );
+        try {
+            EditText lModel = (EditText) findViewById(R.id.addLaptopModel);
+            EditText lYear = (EditText) findViewById(R.id.addLaptopYear);
 
+            Laptop laptop = new Laptop(name.getText().toString(),
+                    description.getText().toString(),
+                    Double.parseDouble(price.getText().toString()),
+                    inStock.isChecked(),
+                    Integer.parseInt(count.getText().toString()),
+                    date,
+                    new ProductCategory(category.getText().toString()),
+                    lModel.getText().toString(),
+                    Integer.parseInt(lYear.getText().toString())
+            );
+
+            MainActivity.products.add(laptop);
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "Someting is wrong", Toast.LENGTH_SHORT).show();
+        }
     }
 }
