@@ -61,6 +61,7 @@ public class addLaptopActivity extends AppCompatActivity {
             );
 
             MainActivity.products.add(laptop);
+            this.finish();
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "Someting is wrong", Toast.LENGTH_SHORT).show();
         }

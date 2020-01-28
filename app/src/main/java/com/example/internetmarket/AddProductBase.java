@@ -2,7 +2,6 @@ package com.example.internetmarket;
 
 import android.content.Intent;
 import android.view.View;
-import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -13,7 +12,7 @@ public class AddProductBase extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_product_base);
 
-        findViewById(R.id.addCancel).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.goBack).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AddProductBase.this.finish();

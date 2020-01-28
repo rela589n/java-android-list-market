@@ -64,6 +64,7 @@ public class addPhoneActivity extends AppCompatActivity {
             );
 
             MainActivity.products.add(phone);
+            this.finish();
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "Someting is wrong", Toast.LENGTH_SHORT).show();
         }

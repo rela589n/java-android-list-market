@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 //                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                        .setAction("Action", null).show();
             }
+
         });
         products = new ArrayList<>();
 
@@ -96,4 +97,13 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        ListView lvMain = (ListView) findViewById(R.id.productsList);//знаходимо ліст
+        lvMain.setAdapter(productAdapter);//заносимо дані із колекції
+    }
+
 }
