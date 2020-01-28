@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_weight="1">
+        <TextView
+                android:text="Name:"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" android:id="@+id/addProductNameLabel" android:layout_weight="1"/>
+        <EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:layout_weight="1" android:id="@+id/addProductName"></EditText>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_weight="1">
+        <TextView
+                android:text="Description:"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/productDescriptionLabel"/>
+        <EditText android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:layout_weight="1" android:id="@+id/addProductDescription"></EditText>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_weight="1">
+        <TextView
+                android:text="Price:"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/productPriceLabel" android:layout_weight="1"/>
+        <EditText android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:layout_weight="1" android:id="@+id/addProductPrice"></EditText>
+        <CheckBox
+                android:text="In stock"
+                android:clickable="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/addProductInStock" android:layout_weight="1"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_weight="1">
+        <TextView
+                android:text="Count:"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/addProductsCountLabel" android:layout_weight="1"/>
+        <EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:layout_weight="1" android:id="@+id/addProductCount"></EditText>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_weight="1">
+        <TextView
+                android:text="Категорія: "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/productCategoryLabel" android:layout_weight="1"/>
+        <EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:layout_weight="1" android:id="@+id/addProductCategory"></EditText>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_weight="0">
+        <TextView
+                android:text="Дата:"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/addProductDateLabel" android:layout_weight="1"/>
+        <TextView
+                android:text="Рік:"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/addProductYearLabel" android:layout_weight="1"/>
+        <TextView
+                android:text="Місяць:"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/addProductMonthLabel" android:layout_weight="1"/>
+        <TextView
+                android:text="День:"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/addProductDayLabel" android:layout_weight="1"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_weight="1">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/notUsed" android:layout_weight="1"/>
+        <EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:layout_weight="1" android:id="@+id/addProductYear"></EditText>
+        <EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:layout_weight="1" android:id="@+id/addProductMonth"></EditText>
+        <EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:layout_weight="1" android:id="@+id/addProductDay"></EditText>
+    </LinearLayout>
+</LinearLayout>

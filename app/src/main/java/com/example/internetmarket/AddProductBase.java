@@ -23,16 +23,16 @@ public class AddProductBase extends AppCompatActivity {
         findViewById(R.id.addLaptop).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AddProductBase.this, AddProductBase.class);
+                Intent intent = new Intent(AddProductBase.this, addLaptopActivity.class);
                 startActivity(intent);
-
             }
         });
 
         findViewById(R.id.addPhone).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(AddProductBase.this, addPhoneActivity.class);
+                startActivity(intent);
             }
         });
 
