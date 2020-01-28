@@ -1,6 +1,8 @@
 package com.example.internetmarket.database.product;
 
-public class ProductCategory {
+import java.io.Serializable;
+
+public class ProductCategory implements Serializable {
     public ProductCategory(String name) {
         this.name = name;
     }

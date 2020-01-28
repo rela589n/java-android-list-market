@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
-    public ArrayList<Product> products;
+    public static ArrayList<Product> products;
     private ProductAdapter productAdapter;
 
     @Override
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 //                        .setAction("Action", null).show();
             }
         });
-        this.products = new ArrayList<>();
+        products = new ArrayList<>();
 
         Calendar date = Calendar.getInstance();
         date.set(2020, 1, 12);
