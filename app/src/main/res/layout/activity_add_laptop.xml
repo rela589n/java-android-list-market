@@ -6,5 +6,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".addLaptopActivity">
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <include layout="@layout/add_laptop_product"/>
+        <Button
+                android:text="Add"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/button2" android:onClick="onAdd"/>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
