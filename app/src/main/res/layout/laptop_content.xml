@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <TextView
+            android:text="Model:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/laptopModelLabel" android:layout_weight="1"/>
+    <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/laptopModelName" android:layout_weight="1"/>
+    <TextView
+            android:text="Year:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/laptopYearLabel" android:layout_weight="1"/>
+    <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/laptopYear" android:layout_weight="1"/>
+</LinearLayout>

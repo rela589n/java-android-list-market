@@ -1,5 +1,6 @@
 package com.example.internetmarket;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ListView;
 import com.example.internetmarket.product.Laptop;
@@ -32,8 +33,11 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(MainActivity.this, AddProductBase.class);
+                startActivity(intent);
+
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
             }
         });
         this.products = new ArrayList<>();
@@ -53,6 +57,19 @@ public class MainActivity extends AppCompatActivity {
         );
 
         products.add(l);
+
+        Laptop l2 = new Laptop(
+                "Ipsum",
+                "Lorem ipsum dolor sit amet",
+                123451.12,
+                false,
+                123,
+                date,
+                new ProductCategory("Some"),
+                "Model",
+                2011
+        );
+        products.add(l2);
 
         productAdapter = new ProductAdapter(this, products);
         ListView lvMain = findViewById(R.id.productsList);

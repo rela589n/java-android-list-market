@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".AddProductBase">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <Button
+                android:text="Laptop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/addLaptop"/>
+        <Button
+                android:text="Phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/addPhone"/>
+        <Button
+                android:text="@android:string/cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/addCancel"
+                android:layout_gravity="bottom|end"
+        />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

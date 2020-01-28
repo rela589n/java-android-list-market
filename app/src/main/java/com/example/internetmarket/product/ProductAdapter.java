@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.example.internetmarket.R;
 
@@ -47,18 +48,47 @@ public class ProductAdapter extends BaseAdapter {
 
         Product p = getProduct(position);
 
+        if (p instanceof Laptop) {
+
+        }
+
         ((TextView) view.findViewById(R.id.productName)).setText(p.name);
         ((TextView) view.findViewById(R.id.productPrice)).setText(p.price + "грн/шт.");
         ((TextView) view.findViewById(R.id.productsCount)).setText(p.count + "шт.");
         ((CheckBox) view.findViewById(R.id.productInStock)).setChecked(p.inStock);
 
-        ((TextView) view.findViewById(R.id.productDeliveryYear)).setText(String.valueOf(p.getDeliveryDate().get(Calendar.YEAR)));
-        ((TextView) view.findViewById(R.id.productDeliveryMonth)).setText(String.valueOf(p.getDeliveryDate().get(Calendar.MONTH)));
-        ((TextView) view.findViewById(R.id.productDeliveryDay)).setText(String.valueOf(p.getDeliveryDate().get(Calendar.DAY_OF_MONTH)));
+        Calendar date = p.getDeliveryDate();
+
+        ((TextView) view.findViewById(R.id.productDate)).setText(
+                String.format(
+                        "%d.%d.%d",
+                        date.get(Calendar.YEAR),
+                        date.get(Calendar.MONTH),
+                        date.get(Calendar.DAY_OF_MONTH)
+                )
+        );
 
         ((TextView) view.findViewById(R.id.productCategoryName)).setText(p.getCategory().getName());
         ((TextView) view.findViewById(R.id.productDescription)).setText(p.getDescription());
 
+        LinearLayout dynamicContent = view.findViewById(R.id.dynamic_content);
+
+        View additional = null;
+        if (p instanceof Laptop) {
+            additional = lInflater.inflate(R.layout.laptop_content, dynamicContent, false);
+
+            ((TextView)additional.findViewById(R.id.laptopModelName)).setText(((Laptop) p).getModel());
+            ((TextView)additional.findViewById(R.id.laptopYear)).setText(((Laptop) p).getYear().toString());
+        }
+        else if (p instanceof Phone) {
+            additional = lInflater.inflate(R.layout.phone_content, dynamicContent, false);
+
+            ((TextView)additional.findViewById(R.id.phoneHeight)).setText(((Phone) p).getHeight().toString());
+            ((TextView)additional.findViewById(R.id.phoneWidth)).setText(((Phone) p).getWidth().toString());
+            ((TextView)additional.findViewById(R.id.phoneBattery)).setText(((Phone) p).getBattery().toString());
+        }
+
+        dynamicContent.addView(additional);
         return view;
     }
 
