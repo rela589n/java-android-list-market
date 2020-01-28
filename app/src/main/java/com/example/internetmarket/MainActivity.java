@@ -25,7 +25,7 @@ import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
     public static Database products;
-    private ProductAdapter productAdapter;
+    public static ProductAdapter productAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,35 +53,6 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-//        Calendar date = Calendar.getInstance();
-//        date.set(2020, 1, 12);
-//        Laptop l = new Laptop(
-//                "Lorem",
-//                "Lorem ipsum dolor sit amet",
-//                12345.12,
-//                true,
-//                10,
-//                date,
-//                new ProductCategory("Aspire"),
-//                "Lorem",
-//                2016
-//        );
-//
-//        products.create(l);
-//
-//        Laptop l2 = new Laptop(
-//                "Ipsum",
-//                "Lorem ipsum dolor sit amet",
-//                123451.12,
-//                false,
-//                123,
-//                date,
-//                new ProductCategory("Some"),
-//                "Model",
-//                2011
-//        );
-//        products.create(l2);
-//
         productAdapter = new ProductAdapter(this, products);
         ListView lvMain = findViewById(R.id.productsList);
         lvMain.setAdapter(productAdapter);
@@ -102,11 +73,16 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id) {
+            case R.id.menuFilter:
+                Intent intent = new Intent(MainActivity.this, FilterActivity.class);
+                startActivity(intent);
+
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
 
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -116,5 +92,10 @@ public class MainActivity extends AppCompatActivity {
         ListView lvMain = (ListView) findViewById(R.id.productsList);//знаходимо ліст
         lvMain.setAdapter(productAdapter);//заносимо дані із колекції
     }
+
+    public void filterClickListener(View view) {
+        Toast.makeText(getApplicationContext(), "Click", Toast.LENGTH_SHORT).show();
+    }
+
 
 }

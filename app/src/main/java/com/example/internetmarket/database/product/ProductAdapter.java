@@ -29,9 +29,9 @@ public class ProductAdapter extends BaseAdapter {
         lInflater = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-//    public void setProducts(HashMap<Integer, DatabaseEntity> products) {
-//        this.products = products;
-//    }
+    public void setProducts(HashMap<Integer, DatabaseEntity> products) {
+        this.products = products;
+    }
 
     @Override
     public int getCount() {
