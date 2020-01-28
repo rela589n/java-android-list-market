@@ -1,4 +1,4 @@
-package com.example.internetmarket.product;
+package com.example.internetmarket.database.product;
 
 public class ProductCategory {
     public ProductCategory(String name) {

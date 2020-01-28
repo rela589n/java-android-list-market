@@ -1,4 +1,4 @@
-package com.example.internetmarket.product;
+package com.example.internetmarket.database.product;
 
 import java.util.Calendar;
 

@@ -1,9 +1,10 @@
-package com.example.internetmarket.product;
+package com.example.internetmarket.database.product;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 
-public abstract class Product {
+public abstract class Product implements Serializable {
     protected String name;
     protected String description;
     protected Double price;
