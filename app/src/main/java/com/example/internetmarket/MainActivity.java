@@ -3,6 +3,8 @@ package com.example.internetmarket;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ListView;
+import android.widget.Toast;
+import com.example.internetmarket.database.generic.Database;
 import com.example.internetmarket.database.product.Laptop;
 import com.example.internetmarket.database.product.Product;
 import com.example.internetmarket.database.product.ProductAdapter;
@@ -14,11 +16,12 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
-    public static ArrayList<Product> products;
+    public static Database products;
     private ProductAdapter productAdapter;
 
     @Override
@@ -40,7 +43,12 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
-        products = new ArrayList<>();
+        try {
+            products = new Database("products.dat");
+        } catch (ClassNotFoundException | IOException e) {
+            Toast.makeText(getApplicationContext(), "Unable connect to datasource.", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         Calendar date = Calendar.getInstance();
         date.set(2020, 1, 12);
@@ -56,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 2016
         );
 
-        products.add(l);
+        products.create(l);
 
         Laptop l2 = new Laptop(
                 "Ipsum",
@@ -69,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 "Model",
                 2011
         );
-        products.add(l2);
+        products.create(l2);
 
         productAdapter = new ProductAdapter(this, products);
         ListView lvMain = findViewById(R.id.productsList);

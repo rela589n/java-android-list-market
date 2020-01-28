@@ -24,7 +24,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/productDescriptionLabel" android:layout_weight="1"/>
         <EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
-                  android:layout_weight="4" android:id="@+id/addProductDescription"></EditText>
+                  android:layout_weight="4" android:id="@+id/addProductDescription"/>
     </LinearLayout>
     <LinearLayout
             android:orientation="horizontal"
@@ -35,7 +35,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/productPriceLabel" android:layout_weight="1"/>
         <EditText android:layout_width="match_parent" android:layout_height="wrap_content"
-                  android:layout_weight="1" android:id="@+id/addProductPrice"></EditText>
+                  android:inputType="number"
+                  android:layout_weight="1" android:id="@+id/addProductPrice"/>
         <CheckBox
                 android:text="In stock"
                 android:clickable="true"
@@ -52,7 +53,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/addProductsCountLabel" android:layout_weight="1"/>
         <EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
-                  android:layout_weight="3" android:id="@+id/addProductCount"></EditText>
+                  android:inputType="number"
+                  android:layout_weight="3" android:id="@+id/addProductCount"/>
     </LinearLayout>
     <LinearLayout
             android:orientation="horizontal"
@@ -63,7 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/productCategoryLabel" android:layout_weight="1"/>
         <EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
-                  android:layout_weight="4" android:id="@+id/addProductCategory"></EditText>
+                  android:layout_weight="4" android:id="@+id/addProductCategory"/>
     </LinearLayout>
     <LinearLayout
             android:orientation="horizontal"
@@ -94,10 +96,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/notUsed" android:layout_weight="1"/>
         <EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
-                  android:layout_weight="1" android:id="@+id/addProductYear"></EditText>
+                  android:layout_weight="1" android:id="@+id/addProductYear"
+                  android:inputType="numberDecimal"
+        />
         <EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
-                  android:layout_weight="1" android:id="@+id/addProductMonth"></EditText>
+                  android:inputType="numberDecimal"
+                  android:layout_weight="1" android:id="@+id/addProductMonth"/>
         <EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
-                  android:layout_weight="1" android:id="@+id/addProductDay"></EditText>
+                  android:inputType="numberDecimal"
+                  android:layout_weight="1" android:id="@+id/addProductDay"/>
     </LinearLayout>
 </LinearLayout>

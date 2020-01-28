@@ -11,6 +11,7 @@
         <TextView
                 android:text="Phone width (px):"
                 android:layout_width="wrap_content"
+                android:inputType="numberDecimal"
                 android:layout_height="wrap_content" android:id="@+id/addPhoneWidthLabel" android:layout_weight="1"/>
         <EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
                   android:layout_weight="3" android:id="@+id/addPhoneWidth"/>
@@ -24,6 +25,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/addPhoneHeightLabel" android:layout_weight="1"/>
         <EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:inputType="numberDecimal"
                   android:layout_weight="3" android:id="@+id/addPhoneHeight"/>
     </LinearLayout>
 
@@ -36,7 +38,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/addPhoneBatteryLabel" android:layout_weight="1"/>
         <EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
-                  android:layout_weight="3" android:id="@+id/addPhoneBattery"/>
+                  android:layout_weight="3" android:id="@+id/addPhoneBattery"
+                android:inputType="numberDecimal"
+        />
     </LinearLayout>
 
 </LinearLayout>

@@ -9,6 +9,8 @@ import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.example.internetmarket.R;
+import com.example.internetmarket.database.generic.Database;
+import com.example.internetmarket.database.generic.DatabaseEntity;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -16,11 +18,11 @@ import java.util.Calendar;
 public class ProductAdapter extends BaseAdapter {
     protected Context ctx;
     protected LayoutInflater lInflater;
-    protected ArrayList<Product> products;
+    protected ArrayList<DatabaseEntity> products;
 
-    public ProductAdapter(Context context, ArrayList<Product> products) {
+    public ProductAdapter(Context context, Database products) {
         ctx = context;
-        this.products = products;
+        this.products = new ArrayList<>(products.readAll().values());
         lInflater = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 

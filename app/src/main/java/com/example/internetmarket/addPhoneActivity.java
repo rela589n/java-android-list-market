@@ -63,7 +63,8 @@ public class addPhoneActivity extends AppCompatActivity {
                     Integer.parseInt(pBattery.getText().toString())
             );
 
-            MainActivity.products.add(phone);
+            MainActivity.products.create(phone);
+            MainActivity.products.save();
             this.finish();
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "Someting is wrong", Toast.LENGTH_SHORT).show();

@@ -60,7 +60,8 @@ public class addLaptopActivity extends AppCompatActivity {
                     Integer.parseInt(lYear.getText().toString())
             );
 
-            MainActivity.products.add(laptop);
+            MainActivity.products.create(laptop);
+            MainActivity.products.save();
             this.finish();
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "Someting is wrong", Toast.LENGTH_SHORT).show();

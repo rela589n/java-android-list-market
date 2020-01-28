@@ -1,10 +1,12 @@
 package com.example.internetmarket.database.product;
 
+import com.example.internetmarket.database.generic.DatabaseEntity;
+
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 
-public abstract class Product implements Serializable {
+public abstract class Product implements DatabaseEntity {
     protected String name;
     protected String description;
     protected Double price;

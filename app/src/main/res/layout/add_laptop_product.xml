@@ -14,7 +14,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/addLaptopModelLabel" android:layout_weight="1"/>
         <EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
-                  android:layout_weight="4" android:id="@+id/addLaptopModel"></EditText>
+                  android:layout_weight="4" android:id="@+id/addLaptopModel"/>
     </LinearLayout>
     <LinearLayout
             android:orientation="horizontal"
@@ -25,7 +25,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/addLaptopYearLabel" android:layout_weight="1"/>
         <EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
-                  android:layout_weight="3" android:id="@+id/addLaptopYear"></EditText>
+                  android:inputType="numberDecimal"
+                  android:layout_weight="3" android:id="@+id/addLaptopYear"/>
     </LinearLayout>
 
 </LinearLayout>
