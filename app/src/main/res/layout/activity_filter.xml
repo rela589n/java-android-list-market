@@ -31,13 +31,13 @@
             <Switch
                     android:text="Category"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:id="@+id/filterICategoryEnabled" android:layout_weight="1"/>
+                    android:layout_height="wrap_content" android:id="@+id/filterCategoryEnabled" android:layout_weight="1"/>
             <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
                     android:ems="10"
-                    android:id="@+id/filterICategory" android:layout_weight="2"/>
+                    android:id="@+id/filterCategory" android:layout_weight="2"/>
         </LinearLayout>
         <Button
                 android:text="Apply"
