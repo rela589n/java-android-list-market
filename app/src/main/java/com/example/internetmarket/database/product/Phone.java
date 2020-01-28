@@ -1,8 +1,10 @@
 package com.example.internetmarket.database.product;
 
+import com.example.internetmarket.database.generic.DatabaseEntity;
+
 import java.util.Calendar;
 
-public class Phone extends Product {
+public class Phone extends Product implements DatabaseEntity {
     protected Integer width;
     protected Integer height;
 

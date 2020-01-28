@@ -1,5 +1,6 @@
 package com.example.internetmarket;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ListView;
@@ -16,7 +17,9 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -44,41 +47,41 @@ public class MainActivity extends AppCompatActivity {
 
         });
         try {
-            products = new Database("products.dat");
+            products = new Database(getApplicationContext(), "products.dat");
         } catch (ClassNotFoundException | IOException e) {
             Toast.makeText(getApplicationContext(), "Unable connect to datasource.", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        Calendar date = Calendar.getInstance();
-        date.set(2020, 1, 12);
-        Laptop l = new Laptop(
-                "Lorem",
-                "Lorem ipsum dolor sit amet",
-                12345.12,
-                true,
-                10,
-                date,
-                new ProductCategory("Aspire"),
-                "Lorem",
-                2016
-        );
-
-        products.create(l);
-
-        Laptop l2 = new Laptop(
-                "Ipsum",
-                "Lorem ipsum dolor sit amet",
-                123451.12,
-                false,
-                123,
-                date,
-                new ProductCategory("Some"),
-                "Model",
-                2011
-        );
-        products.create(l2);
-
+//        Calendar date = Calendar.getInstance();
+//        date.set(2020, 1, 12);
+//        Laptop l = new Laptop(
+//                "Lorem",
+//                "Lorem ipsum dolor sit amet",
+//                12345.12,
+//                true,
+//                10,
+//                date,
+//                new ProductCategory("Aspire"),
+//                "Lorem",
+//                2016
+//        );
+//
+//        products.create(l);
+//
+//        Laptop l2 = new Laptop(
+//                "Ipsum",
+//                "Lorem ipsum dolor sit amet",
+//                123451.12,
+//                false,
+//                123,
+//                date,
+//                new ProductCategory("Some"),
+//                "Model",
+//                2011
+//        );
+//        products.create(l2);
+//
         productAdapter = new ProductAdapter(this, products);
         ListView lvMain = findViewById(R.id.productsList);
         lvMain.setAdapter(productAdapter);
