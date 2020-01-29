@@ -13,25 +13,67 @@ import com.example.internetmarket.database.product.ProductCategory;
 import java.util.Calendar;
 
 public class addPhoneActivity extends AppCompatActivity {
+    private Integer editId = null;
+
+    private EditText name;
+    private EditText description;
+    private EditText price;
+    private EditText count;
+    private EditText category;
+
+    private CheckBox inStock;
+
+    private EditText year;
+    private EditText month;
+    private EditText day;
+
+    private EditText pWidth;
+    private EditText pHeight;
+    private EditText pBattery;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_phone);
+
+        this.name = (EditText) findViewById(R.id.addProductName);
+        this.description = (EditText) findViewById(R.id.addProductDescription);
+        this.price = (EditText) findViewById(R.id.addProductPrice);
+        this.count = (EditText) findViewById(R.id.addProductCount);
+        this.category = (EditText) findViewById(R.id.addProductCategory);
+        this.inStock = (CheckBox) findViewById(R.id.addProductInStock);
+        this.year = (EditText) findViewById(R.id.addProductYear);
+        this.month = (EditText) findViewById(R.id.addProductMonth);
+        this.day = (EditText) findViewById(R.id.addProductDay);
+
+        // for phone
+        this.pWidth = (EditText) findViewById(R.id.addPhoneWidth);
+        this.pHeight = (EditText) findViewById(R.id.addPhoneHeight);
+        this.pBattery = (EditText) findViewById(R.id.addPhoneBattery);
+
+        // extract values from bundle
+        Bundle b = getIntent().getExtras();
+
+        if (b != null) {
+            this.name.setText(b.getString("name", ""));
+            this.description.setText(b.getString("description", ""));
+            this.price.setText(b.getString("price", ""));
+            this.count.setText(b.getString("count", ""));
+            this.category.setText(b.getString("category", ""));
+
+            this.inStock.setChecked(b.getBoolean("inStock", false));
+
+            this.year.setText(b.getString("year", ""));
+            this.month.setText(b.getString("month", ""));
+            this.day.setText(b.getString("day", ""));
+
+            this.pWidth.setText(b.getString("pWidth", ""));
+            this.pHeight.setText(b.getString("pHeight", ""));
+            this.pBattery.setText(b.getString("pBattery", ""));
+        }
     }
 
     public void onAddClick(View v) {
-        EditText name = (EditText) findViewById(R.id.addProductName);
-        EditText description = (EditText) findViewById(R.id.addProductDescription);
-
-        EditText price = (EditText) findViewById(R.id.addProductPrice);
-        EditText count = (EditText) findViewById(R.id.addProductCount);
-        EditText category = (EditText) findViewById(R.id.addProductCategory);
-        CheckBox inStock = (CheckBox) findViewById(R.id.addProductInStock);
-
-        EditText year = (EditText) findViewById(R.id.addProductYear);
-        EditText month = (EditText) findViewById(R.id.addProductMonth);
-        EditText day = (EditText) findViewById(R.id.addProductDay);
 
         Calendar date = Calendar.getInstance();
         try {
@@ -47,9 +89,6 @@ public class addPhoneActivity extends AppCompatActivity {
         /////////////////////////////////////////////////////////////
 
         try {
-            EditText pWidth = (EditText) findViewById(R.id.addPhoneWidthLabel);
-            EditText pHeight = (EditText) findViewById(R.id.addPhoneHeight);
-            EditText pBattery = (EditText) findViewById(R.id.addPhoneBattery);
 
             Phone phone = new Phone(name.getText().toString(),
                     description.getText().toString(),

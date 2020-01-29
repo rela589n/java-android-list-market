@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        productAdapter = new ProductAdapter(this, products);
+        productAdapter = new ProductAdapter(this, products, MainActivity.this);
         refreshProductsList();
     }
 

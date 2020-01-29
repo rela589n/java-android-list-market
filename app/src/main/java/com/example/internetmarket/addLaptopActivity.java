@@ -29,6 +29,9 @@ public class addLaptopActivity extends AppCompatActivity {
     private EditText month;
     private EditText day;
 
+    private EditText lModel;
+    private EditText lYear;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +46,10 @@ public class addLaptopActivity extends AppCompatActivity {
         this.year = (EditText) findViewById(R.id.addProductYear);
         this.month = (EditText) findViewById(R.id.addProductMonth);
         this.day = (EditText) findViewById(R.id.addProductDay);
+
+        // for laptop
+        this.lModel = (EditText) findViewById(R.id.addLaptopModel);
+        this.lYear = (EditText) findViewById(R.id.addLaptopYear);
 
         // extract values from bundle
         Bundle b = getIntent().getExtras();
@@ -59,6 +66,9 @@ public class addLaptopActivity extends AppCompatActivity {
             this.year.setText(b.getString("year", ""));
             this.month.setText(b.getString("month", ""));
             this.day.setText(b.getString("day", ""));
+
+            this.lModel.setText(b.getString("lModel", ""));
+            this.lYear.setText(b.getString("lYear", ""));
         }
 
     }
@@ -70,7 +80,6 @@ public class addLaptopActivity extends AppCompatActivity {
             date.set(Calendar.YEAR, Integer.parseInt(year.getText().toString()));
             date.set(Calendar.MONTH, Integer.parseInt(month.getText().toString()));
             date.set(Calendar.DAY_OF_MONTH, Integer.parseInt(day.getText().toString()));
-
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "Invalid date format", Toast.LENGTH_SHORT).show();
             return;
@@ -79,9 +88,6 @@ public class addLaptopActivity extends AppCompatActivity {
         /////////////////////////////////////////////////////////////
 
         try {
-            EditText lModel = (EditText) findViewById(R.id.addLaptopModel);
-            EditText lYear = (EditText) findViewById(R.id.addLaptopYear);
-
             Laptop laptop = new Laptop(name.getText().toString(),
                     description.getText().toString(),
                     Double.parseDouble(price.getText().toString()),

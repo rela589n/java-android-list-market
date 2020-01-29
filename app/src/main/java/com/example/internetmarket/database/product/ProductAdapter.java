@@ -1,14 +1,15 @@
 package com.example.internetmarket.database.product;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import androidx.annotation.RequiresApi;
-import com.example.internetmarket.MainActivity;
-import com.example.internetmarket.R;
+import com.example.internetmarket.*;
 import com.example.internetmarket.database.generic.Database;
 import com.example.internetmarket.database.generic.DatabaseEntity;
 
@@ -20,11 +21,17 @@ public class ProductAdapter extends BaseAdapter {
     protected Context ctx;
     protected LayoutInflater lInflater;
     protected HashMap<Integer, DatabaseEntity> products;
+    private MainActivity ma;
 
     public ProductAdapter(Context context, Database products) {
         ctx = context;
         this.products = products.readAll();
         lInflater = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    }
+
+    public ProductAdapter(Context context, Database products, MainActivity ma) {
+        this(context, products);
+        this.ma = ma;
     }
 
     public void setProducts(HashMap<Integer, DatabaseEntity> products) {
@@ -79,12 +86,15 @@ public class ProductAdapter extends BaseAdapter {
         LinearLayout dynamicContent = view.findViewById(R.id.dynamic_content);
 
         View additional = null;
+        Integer productType = 0;
         if (p instanceof Laptop) {
+            productType = 1;
             additional = lInflater.inflate(R.layout.laptop_content, dynamicContent, false);
 
             ((TextView) additional.findViewById(R.id.laptopModelName)).setText(((Laptop) p).getModel());
             ((TextView) additional.findViewById(R.id.laptopYear)).setText(((Laptop) p).getYear().toString());
         } else if (p instanceof Phone) {
+            productType = 2;
             additional = lInflater.inflate(R.layout.phone_content, dynamicContent, false);
 
             ((TextView) additional.findViewById(R.id.phoneHeight)).setText(((Phone) p).getHeight().toString());
@@ -100,13 +110,49 @@ public class ProductAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 products.remove(productId);
-                // todo refresh
+                ProductAdapter.this.ma.refreshProductsList();
             }
         });
 
-        ((Button)view.findViewById(R.id.productUpdateBtn)).setOnClickListener(new View.OnClickListener() {
+        final Integer finalProductType = productType;
+        ((Button) view.findViewById(R.id.productUpdateBtn)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //todo make choise
+                Intent intent = null;
+                Bundle b = new Bundle();
+
+                b.putString("name", p.getName());
+                b.putString("description", p.getDescription());
+                b.putString("price", p.getPrice().toString());
+                b.putString("count", p.getCount().toString());
+                b.putString("category", p.getCategory().getName().toString());
+
+                b.putString("year", String.valueOf(p.getDeliveryDate().get(Calendar.YEAR)));
+                b.putString("month", String.valueOf(p.getDeliveryDate().get(Calendar.MONTH)));
+                b.putString("day", String.valueOf(p.getDeliveryDate().get(Calendar.DAY_OF_MONTH)));
+
+                b.putBoolean("inStock", p.getInStock());
+
+                try {
+                    if (finalProductType == 1) { // laptop
+                        b.putString("lModel", ((Laptop) p).getModel());
+                        b.putString("lYear", ((Laptop) p).getYear().toString());
+
+                        intent = new Intent(ProductAdapter.this.ma, addLaptopActivity.class);
+                    } else if (finalProductType == 2) {
+                        b.putString("pWidth", ((Phone) p).getWidth().toString());
+                        b.putString("pHeight", ((Phone) p).getHeight().toString());
+                        b.putString("pBattery", ((Phone) p).getBattery().toString());
+
+                        intent = new Intent(ProductAdapter.this.ma, addPhoneActivity.class);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                intent.putExtras(b);
+                ProductAdapter.this.ma.startActivity(intent);
                 // todo bind listener with activity
             }
         });
