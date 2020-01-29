@@ -6,31 +6,64 @@ import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import com.example.internetmarket.database.generic.DatabaseEntity;
 import com.example.internetmarket.database.product.Laptop;
 import com.example.internetmarket.database.product.ProductCategory;
 
 import java.util.Calendar;
+import java.util.HashMap;
 
 public class addLaptopActivity extends AppCompatActivity {
+
+    private Integer editId = null;
+
+    private EditText name;
+    private EditText description;
+    private EditText price;
+    private EditText count;
+    private EditText category;
+
+    private CheckBox inStock;
+
+    private EditText year;
+    private EditText month;
+    private EditText day;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_laptop);
+
+        this.name = (EditText) findViewById(R.id.addProductName);
+        this.description = (EditText) findViewById(R.id.addProductDescription);
+        this.price = (EditText) findViewById(R.id.addProductPrice);
+        this.count = (EditText) findViewById(R.id.addProductCount);
+        this.category = (EditText) findViewById(R.id.addProductCategory);
+        this.inStock = (CheckBox) findViewById(R.id.addProductInStock);
+        this.year = (EditText) findViewById(R.id.addProductYear);
+        this.month = (EditText) findViewById(R.id.addProductMonth);
+        this.day = (EditText) findViewById(R.id.addProductDay);
+
+        // extract values from bundle
+        Bundle b = getIntent().getExtras();
+
+        if (b != null) {
+            this.name.setText(b.getString("name", ""));
+            this.description.setText(b.getString("description", ""));
+            this.price.setText(b.getString("price", ""));
+            this.count.setText(b.getString("count", ""));
+            this.category.setText(b.getString("category", ""));
+
+            this.inStock.setChecked(b.getBoolean("inStock", false));
+
+            this.year.setText(b.getString("year", ""));
+            this.month.setText(b.getString("month", ""));
+            this.day.setText(b.getString("day", ""));
+        }
+
     }
 
     public void onAdd(View v) {
-        EditText name = (EditText) findViewById(R.id.addProductName);
-        EditText description = (EditText) findViewById(R.id.addProductDescription);
-
-        EditText price = (EditText) findViewById(R.id.addProductPrice);
-        EditText count = (EditText) findViewById(R.id.addProductCount);
-        EditText category = (EditText) findViewById(R.id.addProductCategory);
-        CheckBox inStock = (CheckBox) findViewById(R.id.addProductInStock);
-
-        EditText year = (EditText) findViewById(R.id.addProductYear);
-        EditText month = (EditText) findViewById(R.id.addProductMonth);
-        EditText day = (EditText) findViewById(R.id.addProductDay);
 
         Calendar date = Calendar.getInstance();
         try {
@@ -60,7 +93,17 @@ public class addLaptopActivity extends AppCompatActivity {
                     Integer.parseInt(lYear.getText().toString())
             );
 
-            MainActivity.products.create(laptop);
+            if (this.editId != null) {
+                MainActivity.products.create(laptop);
+            }
+            else { // update
+                HashMap<Integer, DatabaseEntity> hashMap = MainActivity.products.readAll();
+
+                if (hashMap.containsKey(editId)) {
+                    hashMap.replace(editId, laptop);
+                }
+            }
+
             MainActivity.products.save();
             this.finish();
         } catch (Exception e) {

@@ -12,7 +12,7 @@
             android:layout_height="match_parent">
         <include layout="@layout/add_phone_product"/>
         <Button
-                android:text="Add"
+                android:text="Save"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/button" android:onClick="onAddClick"/>
     </LinearLayout>
