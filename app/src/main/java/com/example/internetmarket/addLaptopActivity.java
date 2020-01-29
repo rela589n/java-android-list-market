@@ -92,7 +92,8 @@ public class addLaptopActivity extends AppCompatActivity {
         /////////////////////////////////////////////////////////////
 
         try {
-            Laptop laptop = new Laptop(name.getText().toString(),
+            Laptop laptop = new Laptop(
+                    name.getText().toString(),
                     description.getText().toString(),
                     Double.parseDouble(price.getText().toString()),
                     inStock.isChecked(),
@@ -110,9 +111,18 @@ public class addLaptopActivity extends AppCompatActivity {
                 HashMap<Integer, DatabaseEntity> hashMap = MainActivity.products.readAll();
 
                 if (hashMap.containsKey(editId)) {
-                    hashMap.remove(editId);
-                    hashMap.put(editId, laptop);
-//                    hashMap.replace(editId, laptop);
+                    Laptop old = (Laptop) hashMap.get(editId);
+
+                    old.setCategory(laptop.getCategory());
+                    old.setCount(laptop.getCount());
+                    old.setDeliveryDate(laptop.getDeliveryDate());
+                    old.setDescription(laptop.getDescription());
+                    old.setInStock(laptop.getInStock());
+                    old.setName(laptop.getName());
+                    old.setPrice(laptop.getPrice());
+
+                    old.setModel(laptop.getModel());
+                    old.setYear(laptop.getYear());
                 }
             }
 

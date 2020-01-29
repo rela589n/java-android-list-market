@@ -114,8 +114,21 @@ public class addPhoneActivity extends AppCompatActivity {
                 HashMap<Integer, DatabaseEntity> hashMap = MainActivity.products.readAll();
 
                 if (hashMap.containsKey(editId)) {
-                    hashMap.remove(editId);
-                    hashMap.put(editId, phone);
+                    Phone old = (Phone) hashMap.get(editId);
+
+                    old.setCategory(phone.getCategory());
+                    old.setCount(phone.getCount());
+                    old.setDeliveryDate(phone.getDeliveryDate());
+                    old.setDescription(phone.getDescription());
+                    old.setInStock(phone.getInStock());
+                    old.setName(phone.getName());
+                    old.setPrice(phone.getPrice());
+
+                    old.setBattery(phone.getBattery());
+                    old.setHeight(phone.getHeight());
+                    old.setWidth(phone.getWidth());
+//                    hashMap.remove(editId);
+//                    hashMap.put(editId, phone);
 //                    hashMap.replace(editId, laptop);
                 }
             }
