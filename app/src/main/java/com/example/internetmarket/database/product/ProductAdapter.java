@@ -5,11 +5,9 @@ import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.CheckBox;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.*;
 import androidx.annotation.RequiresApi;
+import com.example.internetmarket.MainActivity;
 import com.example.internetmarket.R;
 import com.example.internetmarket.database.generic.Database;
 import com.example.internetmarket.database.generic.DatabaseEntity;
@@ -56,7 +54,8 @@ public class ProductAdapter extends BaseAdapter {
             view = lInflater.inflate(R.layout.item, parent, false);
         }
 
-        Product p = getProduct(position);
+        final Integer productId = getProductId(position);
+        Product p = (Product) products.get(productId);
 
         ((TextView) view.findViewById(R.id.productName)).setText(p.name);
         ((TextView) view.findViewById(R.id.productPrice)).setText(p.price + "грн/шт.");
@@ -94,13 +93,31 @@ public class ProductAdapter extends BaseAdapter {
         }
 
         dynamicContent.addView(additional);
+
+        // button click listeners
+
+        ((Button) view.findViewById(R.id.productDeleteBtn)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                products.remove(productId);
+                // todo refresh
+            }
+        });
+
+        ((Button)view.findViewById(R.id.productUpdateBtn)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // todo bind listener with activity
+            }
+        });
+
         return view;
     }
 
     private Integer getProductId(int position) {
         Integer id = 0;
         long i = 0;
-        for(Map.Entry<Integer, DatabaseEntity> entry : products.entrySet()) {
+        for (Map.Entry<Integer, DatabaseEntity> entry : products.entrySet()) {
             if (i > position) {
                 break;
             }

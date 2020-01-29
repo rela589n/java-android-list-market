@@ -54,8 +54,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         productAdapter = new ProductAdapter(this, products);
-        ListView lvMain = findViewById(R.id.productsList);
-        lvMain.setAdapter(productAdapter);
+        refreshProductsList();
     }
 
     @Override
@@ -88,7 +87,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        refreshProductsList();
+    }
 
+    public void refreshProductsList() {
         ListView lvMain = (ListView) findViewById(R.id.productsList);//знаходимо ліст
         lvMain.setAdapter(productAdapter);//заносимо дані із колекції
     }
