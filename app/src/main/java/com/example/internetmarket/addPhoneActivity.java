@@ -6,11 +6,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import com.example.internetmarket.database.generic.DatabaseEntity;
 import com.example.internetmarket.database.product.Laptop;
 import com.example.internetmarket.database.product.Phone;
 import com.example.internetmarket.database.product.ProductCategory;
 
 import java.util.Calendar;
+import java.util.HashMap;
 
 public class addPhoneActivity extends AppCompatActivity {
     private Integer editId = null;
@@ -55,6 +57,9 @@ public class addPhoneActivity extends AppCompatActivity {
         Bundle b = getIntent().getExtras();
 
         if (b != null) {
+            // extract edit id
+            this.editId = b.getInt("editId");
+
             this.name.setText(b.getString("name", ""));
             this.description.setText(b.getString("description", ""));
             this.price.setText(b.getString("price", ""));
@@ -102,8 +107,21 @@ public class addPhoneActivity extends AppCompatActivity {
                     Integer.parseInt(pBattery.getText().toString())
             );
 
-            MainActivity.products.create(phone);
-            MainActivity.products.save();
+            if (this.editId == null) {
+                MainActivity.products.create(phone);
+            }
+            else { // update
+                HashMap<Integer, DatabaseEntity> hashMap = MainActivity.products.readAll();
+
+                if (hashMap.containsKey(editId)) {
+                    hashMap.remove(editId);
+                    hashMap.put(editId, phone);
+//                    hashMap.replace(editId, laptop);
+                }
+            }
+
+//            MainActivity.products.create(phone);
+//            MainActivity.products.save();
             this.finish();
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "Someting is wrong", Toast.LENGTH_SHORT).show();

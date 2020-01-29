@@ -55,6 +55,9 @@ public class addLaptopActivity extends AppCompatActivity {
         Bundle b = getIntent().getExtras();
 
         if (b != null) {
+            // extract edit id
+            this.editId = b.getInt("editId");
+
             this.name.setText(b.getString("name", ""));
             this.description.setText(b.getString("description", ""));
             this.price.setText(b.getString("price", ""));
@@ -69,6 +72,7 @@ public class addLaptopActivity extends AppCompatActivity {
 
             this.lModel.setText(b.getString("lModel", ""));
             this.lYear.setText(b.getString("lYear", ""));
+
         }
 
     }
@@ -99,14 +103,16 @@ public class addLaptopActivity extends AppCompatActivity {
                     Integer.parseInt(lYear.getText().toString())
             );
 
-            if (this.editId != null) {
+            if (this.editId == null) {
                 MainActivity.products.create(laptop);
             }
             else { // update
                 HashMap<Integer, DatabaseEntity> hashMap = MainActivity.products.readAll();
 
                 if (hashMap.containsKey(editId)) {
-                    hashMap.replace(editId, laptop);
+                    hashMap.remove(editId);
+                    hashMap.put(editId, laptop);
+//                    hashMap.replace(editId, laptop);
                 }
             }
 

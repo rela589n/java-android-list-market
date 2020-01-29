@@ -134,6 +134,7 @@ public class ProductAdapter extends BaseAdapter {
 
                 b.putBoolean("inStock", p.getInStock());
 
+                b.putInt("editId", productId);
                 try {
                     if (finalProductType == 1) { // laptop
                         b.putString("lModel", ((Laptop) p).getModel());
